@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript" th:src="@{/static/JS/vue.js}"></script>
+    <script language="JavaScript" th:src="@{/static/JS/axios.min.js}"></script>
+    <script language="JavaScript" th:src="@{/static/JS/mainTop.js}"></script>
+    <link rel="stylesheet" th:href="@{/static/CSS/mainTop.css}">
+    <link rel="stylesheet" th:href="@{/static/CSS/details.css}">
+</head>
+<body>
+<div id="top_div">
+    <div id="centerDiv" th:onclick="jumpMain()">欢迎来到旅游信息发布系统</div>
+    <div id="allSelect"><input type="text" id="selectInput"><img src="http://127.0.0.1:8080/IMG/img_1.png" id="selectImg" th:onclick="selectByText()"></div>
+    <div id="userDiv"><label id="usercharName" th:text="${session.user.charname}"></label><img id="headImg" th:src="@{/static/IMG/img.png}" th:onclick="display()">
+    </div>
+    <div id="underDiv">
+        <li class="liDiv" th:onclick="toAdd()">发布信息</li>
+        <li class="liDiv" th:onclick="toMyTravel()">我发布的</li>
+        <li class="liDiv" th:onclick="exit()">注销登录</li>
+    </div>
+</div>
+
+<div id="detailsTitleId"><label th:text="${session.travel.title}"></label>
+<div id="detailsDetailsId"><p th:text="${session.travel.travelDetail.context}" id="pId"></p></div>
+<div id="detailsImgId"><img th:src="${session.travel.img.adress}" id="detailsRealImgId"></div>
+</div>
+
+
+</body>
+</html>

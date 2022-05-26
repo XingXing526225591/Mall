@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script type="text/javascript" th:src="@{/static/JS/login.js}"></script>
+    <link rel="stylesheet" href="../../static/CSS/login.css">
+    <link rel="stylesheet" th:href="@{/static/CSS/login.css}">
+    <link rel="stylesheet" th:href="@{/static/CSS/login.css}">
+</head>
+<body>
+<div id="bigFormDiv">
+    <div id="textFormDiv">
+        <span class="loginMsg">&#8195&#8194&#8194欢迎登录</span><br>
+        <span class="loginMsg">旅游信息发布系统</span>
+    </div>
+    <div id="loginFormDiv">
+       <form id="loginForm" th:action="@{/user/login}" method="post">
+
+           <div class="fristDiv">
+           <label class="labelText">用户名：</label><input class="inputTd" type="text" name="userName" th:if="${userName}!=null" th:value="${userName}">
+               <input class="inputTd" type="text" name="userName" th:unless="${userName}!=null">
+           </div>
+           <div class="textDiv">
+           <label class="labelText">密码： &#8194</label><input class="inputTd" type="password" name="passWord" th:if="${passWord}!=null" th:value="${passWord}">
+               <input class="inputTd" type="password" name="passWord" th:unless="${passWord}!=null">
+           </div>
+           <div class="textDiv">
+               <label class="labelText">验证码：</label>
+               <input class="labelVerifyCode" name="VerifyCode" type="text"  placeholder="" />
+               <img alt="单击图片刷新！" class="labelCode" th:src="@{/verifyCode.jpg}" th:onclick="this.src='http://127.0.0.1:8080/travel/verifyCode.jpg?d='+ Math.random()">
+           </div>
+           <div class="fristDiv" >
+               <b></b> <span id="spanDivIf" th:if="${msg}!=null" th:text="${msg}"></span>
+           </div>
+           <div class="textDiv">
+             <input class="btnTd" type="submit" value="登录">   <input type="button" class="btnTd" value="注册" th:onclick="regist()">
+           </div>
+           <div id="remDiv"><input type="checkbox" id="remember" name="remember"><label>一周内免登录</label></div>
+       </form>
+    </div>
+</div>
+</body>
+</html>

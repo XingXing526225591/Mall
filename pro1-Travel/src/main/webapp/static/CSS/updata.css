@@ -1,0 +1,85 @@
+#addMainDiv{
+    margin-top: 1%;
+    width: 60%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.addFormDiv{
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+}
+.addFormDiv1{
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 8%;
+}
+
+.addTextDiv{
+    width: 40%;
+    font-size: 20px;
+    font-family: "Arial Black";
+}
+.addInput{
+    width: 30%;
+    height: 30px;
+}
+
+#addTextInput{
+    resize: none;
+    width: 30%;
+    height: 200px;
+    wrap-option: hard;
+}
+
+#addTextTwoDiv{
+    width: 40%;
+    font-size: 20px;
+    font-family: "Arial Black";
+    vertical-align:top
+}
+
+#file{
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+#filePng{
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+
+#pgnText{
+    margin-left: 26%;
+}
+
+#addFormBtn{
+    background-color: #39987c;
+    height: 30px;
+    width: 40%;
+    color: white;
+    border-style: none;
+    border-radius: 8px;
+}
+
+#result{
+    background-color: red;
+    position: relative;
+    float: left;
+    width: 31%;
+    margin-left: 0
+}
+
+.errMess{
+    color: red;
+}
+.errAddTitle1{
+    margin-left: 2%;
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+                                  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+        <generatorConfiguration>
+        <!--
+        targetRuntime: 执行生成的逆向工程的版本
+
+        -->
+<context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 数据库的连接信息 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/travel"
+                        userId="root"
+                        password="5261019zxglucky?">
+                <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!-- javaBean的生成策略-->
+        <javaModelGenerator targetPackage="com.wtu.travel.bean"
+                            targetProject=".\src\main\java">
+        </javaModelGenerator>
+        <!-- SQL映射文件的生成策略 -->
+        <sqlMapGenerator targetPackage="com.wtu.travel.mapper"
+                         targetProject=".\src\main\resources">
+                <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- Mapper接口的生成策略 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.wtu.travel.mapper" targetProject=".\src\main\java">
+                <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 逆向分析的表 -->
+        <!-- tableName设置为*号，可以对应所有表，此时不写domainObjectName -->
+        <!-- domainObjectName属性指定生成出来的实体类的类名 -->
+        <table tableName="%" >
+                <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+
+</context>
+        </generatorConfiguration>

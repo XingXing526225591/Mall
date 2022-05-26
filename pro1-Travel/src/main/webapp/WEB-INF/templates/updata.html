@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>更新景点信息</title>
+    <script language="JavaScript" th:src="@{/static/JS/vue.js}"></script>
+    <script language="JavaScript" th:src="@{/static/JS/axios.min.js}"></script>
+    <script language="JavaScript" th:src="@{/static/JS/mainTop.js}"></script>
+    <script language="JavaScript" th:src="@{/static/JS/updata.js}"></script>
+    <link rel="stylesheet" th:href="@{/static/CSS/mainTop.css}">
+    <link rel="stylesheet" th:href="@{/static/CSS/updata.css}">
+</head>
+<body>
+<div id="top_div">
+    <div id="centerDiv" th:onclick="jumpMain()">欢迎来到旅游信息发布系统</div>
+    <div id="allSelect"><input type="text" id="selectInput"><img src="http://127.0.0.1:8080/IMG/img_1.png" id="selectImg" th:onclick="selectByText()"></div>
+    <div id="userDiv"><label id="usercharName" th:text="${session.user.charname}"></label><img id="headImg" th:src="@{/static/IMG/img.png}" th:onclick="display()">
+    </div>
+    <div id="underDiv">
+        <li class="liDiv" th:onclick="toAdd()">发布信息</li>
+        <li class="liDiv" th:onclick="toMyTravel()">我发布的</li>
+        <li class="liDiv" th:onclick="exit()">注销登录</li>
+    </div>
+</div>
+<div id="addMainDiv">
+    <form th:action="@{/update}" method="post" enctype="multipart/form-data" onsubmit="return addCheckAll()">
+        <input type="hidden" th:value="${session.travel.id}" name="travelId">
+        <div class="addFormDiv1">
+            <label class="addTextDiv">请输入景区名称: </label><input type="text" name="title" class="addInput" onblur="checkTitle()" th:value="${session.travel.title}" id="realAddTitle">
+            <div class="errAddTitle1">
+                <label class="errMess" id="errTitle"></label>
+            </div>
+        </div>
+        <div class="addFormDiv">
+            <label class="addTextDiv"> 请输入地区: </label><input type="text" name="region" class="addInput" id="addRegionInput" th:value="${session.travel.region}" onblur="checkRegion()">
+            <div class="errAddTitle">
+                <label class="errMess" id="errAddInput"></label>
+            </div>
+        </div>
+        <div class="addFormDiv">
+            <label id="addTextTwoDiv"> 请输入简介: </label><textarea th:text="${session.travel.travelDetail.context}" name="context" id="addTextInput" onblur="checkContext()"></textarea>
+            <div class="errAddTitle" style="vertical-align: top">
+                <label class="errMess" id="errContext"></label>
+            </div>
+        </div>
+        <div class="addFormDiv">
+            <div class="errAddTitle">
+                <label class="errMess" id="errAddImg"></label>
+            </div>
+            <div id="pgnText"> <label class="addTextDiv">请添加图片：</label> </div>
+            <div id="result">
+                <img th:src="${session.travel.img.adress}" id="filePng">
+                <input type="file"  name="photo" id="file" onblur="checkAddImg()" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg">
+            </div>
+        </div>
+        <div class="addFormDiv">
+            <input type="submit" id="addFormBtn">
+        </div>
+    </form>
+</div>
+</body>
+</html>

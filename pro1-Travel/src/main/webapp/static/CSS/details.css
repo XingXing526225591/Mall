@@ -1,0 +1,26 @@
+#top_div{
+    width: 100%;
+    background-color: #39987c;
+    height: 8%;
+}
+
+
+iframe{
+    width:100%;
+    float:left;
+    border:0px;
+}
+
+#detailsTitleId{
+    width: 40%;
+    float: left;
+    margin-left: 30%;
+    font-size: 35px;
+    text-align: center;
+    font-family: "Arial Black";
+}
+
+#detailsDetailsId{
+    width: 100%;
+    font-size: 16px;
+}
