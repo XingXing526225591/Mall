@@ -42,6 +42,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+
     <!-- 文件映入 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <!-- 定义数据源 -->
@@ -60,6 +61,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.ssm.entity"/>
         <property name="configLocation" value="classpath:mybatis--config.xml"/>
+
     </bean>
     <!--扫描mapper接口，使用的依然是Mybatis原生的扫描器-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
