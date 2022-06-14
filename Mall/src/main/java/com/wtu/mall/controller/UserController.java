@@ -15,9 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 
@@ -26,13 +24,10 @@ public class UserController {
     @Autowired
     private UserService userService;
     @ResponseBody
-    @RequestMapping("/")
-    public User list() throws IOException {
+    @RequestMapping("/userAdmin_findAll.action")
+    public List<User> list(){
         User user = new User();
-        user.setName("ÕÅÈý");
-        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(user.getName() != null,User::getName,user.getName());
-        List<User> list = userService.list(queryWrapper);
-        return list.get(0);
+        List<User> list = userService.list();
+        return list;
     }
 }
