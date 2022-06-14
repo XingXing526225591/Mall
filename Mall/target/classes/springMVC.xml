@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
     <!-- 自动扫描包 -->
     <context:component-scan base-package="com.wtu.mall"/>
     <!-- 配置Thymeleaf视图解析器 -->
@@ -41,6 +42,33 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <!-- 文件映入 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 定义数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="maxActive" value="10"/>
+        <property name="minIdle" value="5"/>
+    </bean>
+    <!--这里使用MP提供的sqlSessionFactory，完成了Spring与MP的整合-->
+    <bean id="sqlSessionFactory"
+          class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.ssm.entity"/>
+        <property name="configLocation" value="classpath:mybatis--config.xml"/>
+    </bean>
+    <!--扫描mapper接口，使用的依然是Mybatis原生的扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.wtu.mall.mapper"/>
+    </bean>
 
+    <!--mapper
+-->
 
 </beans>
+
